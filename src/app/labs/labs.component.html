@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>Hola mi primer proyecto</h1>
+  <h2>{{welcome}}</h2>
+  <ul>
+    <li *ngFor="let task of tasks()">
+      {{task}}
+    </li>
+  </ul>
+  
+  <hr />
+  
+  <h2>{{'Hola '.repeat(4)}}</h2>
+  <p>la suma de 3 + 3 es {{3 + 3}}</p>
+  <hr>
+  <p>hola, soy {{name()}}</p>
+  <input type="text" [value]="person().name">
+  <button [disabled]="disabled">click me</button>
+  <img [src]="person().avatar" alt="avatar">
+  <p>persona:  {{person().name}}</p>
+  
+  <hr>
+  
+  <button (click)="clickHandler()">Click me</button>
+  <button (dblclick)="clickDoble()">Double click</button>
+
+  <p>(change)</p>
+  <input type="number" [value]="person().age" (change)="changeHandler($event)">
+
+  <p>(ketdown)</p>
+  <input type="text" [value]="person().name" (keyup)="keydownHandler($event)">
+  
+  <h1>SIGNAL</h1>
+  <input type="text" [value]="name()" (keyup)="updateTitle($event)">
+
+  <ul>
+    <p>Total: {{tasks().length}}</p>
+    <li *ngFor="let task of tasks(); index as i">
+      {{i}} {{task}}
+    </li>
+  </ul>
+
+  <p *ngIf="person().name === 'German' else miBloque">me muestro</p>
+  <ng-template #miBloque>
+    este es el otro bloque
+  </ng-template>
+
+
+  <input type="color" [formControl]="colorCtrl">
+  <p>color: {{colorCtrl.value}}</p>
+
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value"/>
+    </g>
+  </svg>
+
+  <hr>
+
+  <input type="number" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
+
+  <hr>
+
+  <p>
+    <input type="text" [formControl]="nameCtrl"><br>
+    <span class="message-error" [class.active]="nameCtrl.invalid && nameCtrl.touched">Nombre invalido</span>
+  </p>
+  <input type="text">
+</div>
