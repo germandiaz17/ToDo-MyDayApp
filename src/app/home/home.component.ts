@@ -1,12 +1,12 @@
 import { Component, computed, effect, inject, Injector, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Task } from '../models/task.models';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -49,7 +49,7 @@ export class HomeComponent {
   trackTasks() {
     effect(() => {
       const tasks = this.tasks()
-      console.log(tasks)
+      console.log(tasks )
       localStorage.setItem('tasks', JSON.stringify(tasks))
     }, {injector: this.injector})
   }
